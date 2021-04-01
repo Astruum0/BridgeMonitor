@@ -25,6 +25,13 @@ namespace BridgeMonitor.Controllers
 
             return View(ClosingModel);
         }
+        public async Task<IActionResult> All()
+        {
+            var ClosingModel = new ClosingList();
+            await ClosingModel.fetchData();
+
+            return View(ClosingModel);
+        }
 
         public IActionResult Privacy()
         {

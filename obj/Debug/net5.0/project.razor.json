@@ -15603,6 +15603,11 @@
   "RootNamespace": "BridgeMonitor",
   "Documents": [
     {
+      "FilePath": "/Users/macbookair/Desktop/Ynov/dotNet/BridgeMonitor/Views/Home/All.cshtml",
+      "TargetPath": "Views\\Home\\All.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "/Users/macbookair/Desktop/Ynov/dotNet/BridgeMonitor/Views/Home/Privacy.cshtml",
       "TargetPath": "Views\\Home\\Privacy.cshtml",
       "FileKind": "mvc"

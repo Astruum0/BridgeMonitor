@@ -26,8 +26,8 @@ namespace BridgeMonitor.Models
         public string ClosingDuration {
             get {
                 var diff = Convert.ToDateTime(ReopeningDate) - Convert.ToDateTime(ClosingDate);
-                var days = diff.TotalDays <= 1 ? "" : diff.TotalDays.ToString() + " jours ";
-                var hours = diff.TotalHours == 0 ? "" : diff.TotalHours.ToString() + " heures ";
+                var days = diff.TotalDays <= 1 ? "" : Math.Floor(diff.TotalDays).ToString() + " jours ";
+                var hours = diff.TotalHours == 0 ? "" : Math.Floor(diff.TotalHours).ToString() + " heures ";
                 var minutes = diff.TotalMinutes%60 == 0 ? "" : (diff.TotalMinutes%60).ToString() + " minutes";
 
                 return days + hours + minutes;

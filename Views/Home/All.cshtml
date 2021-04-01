@@ -1,0 +1,33 @@
+@{
+    ViewData["Title"] = "Toutes les fermetures";
+}
+@model BridgeMonitor.Models.ClosingList;
+
+<div class="text-left">
+    <h1 class="display-4">Toutes les fermetures</h1>
+    <div class="list-group mb-3">
+        <div class="list-group-item list-group-item-dark">
+            Prochaines fermetures
+        </div>
+        @foreach (var closing in Model.ListOfFutureClosing)
+        {
+            <a class="list-group-item list-group-item-action">
+                Bateau @closing.BoatName, du @closing.FormattedClosingDate au @closing.FormattedReopeningDate (@closing.ClosingDuration)
+            </a>
+        }
+    </div>
+
+    <div class="list-group">
+        <div class="list-group-item list-group-item-dark">
+            Fermetures passées
+        </div>
+        @foreach (var closing in Model.ListOfDoneClosing)
+        {
+            <a class="list-group-item list-group-item-action">
+                Bateau @closing.BoatName, du @closing.FormattedClosingDate au @closing.FormattedReopeningDate (@closing.ClosingDuration)
+            </a>
+        }
+    </div>
+
+
+</div>

@@ -14,6 +14,10 @@ namespace BridgeMonitor.Models
         public List<Closing> ListOfClosing { get; set; }
 
         public Closing NextClosing { get; set; }
+
+        public List<Closing> ListOfFutureClosing = new List<Closing>();
+
+        public List<Closing> ListOfDoneClosing = new List<Closing>();
         public static readonly HttpClient client = new HttpClient();
         public static async Task<List<Closing>> ApiCall() {
             client.DefaultRequestHeaders.Accept.Clear();
@@ -29,14 +33,25 @@ namespace BridgeMonitor.Models
             ListOfClosing = ListOfClosing.OrderBy(closing=>Convert.ToDateTime(closing.ClosingDate)).ToList();
             var today = DateTime.Now;
 
-            foreach(var closing in ListOfClosing) {
+            var NextClosingAssigned = false;
+            foreach (var closing in ListOfClosing)
+            {
                 var closing_date = Convert.ToDateTime(closing.ClosingDate);
-                if (DateTime.Compare(today, closing_date) <= 0) {
+                if (!NextClosingAssigned && DateTime.Compare(today, closing_date) <= 0)
+                {
                     NextClosing = closing;
-                    break;
+                    NextClosingAssigned = true;
+                }
+                if (NextClosingAssigned)
+                {
+                    ListOfFutureClosing.Add(closing);
+                }
+                else
+                {
+                    ListOfDoneClosing.Add(closing);
                 }
             }
-            
+
         }
 
     }
