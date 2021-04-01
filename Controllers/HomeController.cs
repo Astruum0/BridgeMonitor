@@ -18,9 +18,12 @@ namespace BridgeMonitor.Controllers
             _logger = logger;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            var ClosingModel = new ClosingList();
+            await ClosingModel.fetchData();
+
+            return View(ClosingModel);
         }
 
         public IActionResult Privacy()

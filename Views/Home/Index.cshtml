@@ -1,8 +1,34 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
+@model BridgeMonitor.Models.ClosingList;
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="text-left">
+    <h1 class="display-4">Prochaine fermeture</h1>
+    <ul class="list-group">
+        <li class="list-group-item">
+            Date de fermeture : @Model.NextClosing.FormattedClosingDate
+        </li>
+        <li class="list-group-item">
+            Date de réouverture : @Model.NextClosing.FormattedReopeningDate
+        </li>
+        <li class="list-group-item">
+            Bateau : @Model.NextClosing.BoatName
+        </li>
+
+        <li class="list-group-item">
+            Durée de la fermeture : @Model.NextClosing.ClosingDuration
+        </li>
+        <li class="list-group-item">
+            Prochaine fermeture dans @Model.NextClosing.TimeUntilClosing
+        </li>
+        <li class="list-group-item">
+            @if(Model.NextClosing.TrafficRisk) {
+                <text>Risque élevé de bouchons !</text>
+            } else {
+                <text>Risque faible de bouchons</text>
+            }
+        </li>
+        
+    </ul>
 </div>
