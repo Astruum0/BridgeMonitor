@@ -1,5 +1,6 @@
 using System;
 using System.Text.Json.Serialization;
+using System.Globalization;
 
 namespace BridgeMonitor.Models 
 {
@@ -34,6 +35,12 @@ namespace BridgeMonitor.Models
             }
         }
 
+        public string FormattedCLosingDateOnly {
+            get {
+                return Convert.ToDateTime(ClosingDate).ToString("D", CultureInfo.CreateSpecificCulture("fr-FR"));
+            }
+        }
+
         public string TimeUntilClosing {
             get {
                 var diff = Convert.ToDateTime(ClosingDate) - DateTime.Now;
@@ -49,6 +56,8 @@ namespace BridgeMonitor.Models
                 return (closing.Hour <= 9 && 7 >= reopening.Hour) || (closing.Hour <= 19 && 17 >= reopening.Hour);
             }
         }
+
+        public int id { get; set; }
 
     }
 

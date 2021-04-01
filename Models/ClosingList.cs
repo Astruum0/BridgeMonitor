@@ -13,7 +13,9 @@ namespace BridgeMonitor.Models
     {
         public List<Closing> ListOfClosing { get; set; }
 
-        public Closing NextClosing { get; set; }
+        public Closing NextClosing { get; set; }
+
+        public Closing DetailedClosing {get; set;}
 
         public List<Closing> ListOfFutureClosing = new List<Closing>();
 
@@ -34,8 +36,12 @@ namespace BridgeMonitor.Models
             var today = DateTime.Now;
 
             var NextClosingAssigned = false;
+
+            var id = 0;
             foreach (var closing in ListOfClosing)
             {
+                closing.id = id;
+                id++;
                 var closing_date = Convert.ToDateTime(closing.ClosingDate);
                 if (!NextClosingAssigned && DateTime.Compare(today, closing_date) <= 0)
                 {
@@ -51,7 +57,10 @@ namespace BridgeMonitor.Models
                     ListOfDoneClosing.Add(closing);
                 }
             }
+        }
 
+        public void SetDetail(int id) {
+            DetailedClosing = ListOfClosing[id];
         }
 
     }

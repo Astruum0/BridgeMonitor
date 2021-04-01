@@ -15641,6 +15641,11 @@
       "FilePath": "/Users/macbookair/Desktop/Ynov/dotNet/BridgeMonitor/Views/Home/Index.cshtml",
       "TargetPath": "Views\\Home\\Index.cshtml",
       "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/Users/macbookair/Desktop/Ynov/dotNet/BridgeMonitor/Views/Home/Details.cshtml",
+      "TargetPath": "Views\\Home\\Details.cshtml",
+      "FileKind": "mvc"
     }
   ],
   "SerializationFormat": "0.2"

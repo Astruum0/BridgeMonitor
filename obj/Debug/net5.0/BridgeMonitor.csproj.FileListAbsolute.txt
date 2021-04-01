@@ -38,3 +38,4 @@
 /Users/macbookair/Desktop/Ynov/dotNet/BridgeMonitor/obj/Debug/net5.0/BridgeMonitor.genruntimeconfig.cache
 /Users/macbookair/Desktop/Ynov/dotNet/BridgeMonitor/obj/Debug/net5.0/BridgeMonitor.csproj.CopyComplete
 /Users/macbookair/Desktop/Ynov/dotNet/BridgeMonitor/obj/Debug/net5.0/Razor/Views/Home/All.cshtml.g.cs
+/Users/macbookair/Desktop/Ynov/dotNet/BridgeMonitor/obj/Debug/net5.0/Razor/Views/Home/Details.cshtml.g.cs

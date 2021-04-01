@@ -1,29 +1,29 @@
-﻿@{
-    ViewData["Title"] = "Prochaine fermeture";
+@{
+    ViewData["Title"] = "Details";
 }
 @model BridgeMonitor.Models.ClosingList;
 
 <div class="text-left">
-    <h1 class="display-4">Prochaine fermeture</h1>
+    <h1 class="display-4">Détails de la fermeture du @Model.DetailedClosing.FormattedCLosingDateOnly</h1>
     <ul class="list-group">
         <li class="list-group-item">
-            Date de fermeture : @Model.NextClosing.FormattedClosingDate
+            Date de fermeture : @Model.DetailedClosing.FormattedClosingDate
         </li>
         <li class="list-group-item">
-            Date de réouverture : @Model.NextClosing.FormattedReopeningDate
+            Date de réouverture : @Model.DetailedClosing.FormattedReopeningDate
         </li>
         <li class="list-group-item">
-            Bateau : @Model.NextClosing.BoatName
+            Bateau : @Model.DetailedClosing.BoatName
         </li>
 
         <li class="list-group-item">
-            Durée de la fermeture : @Model.NextClosing.ClosingDuration
+            Durée de la fermeture : @Model.DetailedClosing.ClosingDuration
         </li>
         <li class="list-group-item">
-            Prochaine fermeture dans @Model.NextClosing.TimeUntilClosing
+            Prochaine fermeture dans @Model.DetailedClosing.TimeUntilClosing
         </li>
         <li class="list-group-item">
-            @if(Model.NextClosing.TrafficRisk) {
+            @if(Model.DetailedClosing.TrafficRisk) {
                 <text>Risque élevé de bouchons !</text>
             } else {
                 <text>Risque faible de bouchons</text>
@@ -32,3 +32,4 @@
         
     </ul>
 </div>
+
