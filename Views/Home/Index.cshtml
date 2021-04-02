@@ -19,7 +19,7 @@
         <li class="list-group-item">
             Durée de la fermeture : @Model.NextClosing.ClosingDuration
         </li>
-        <li class="list-group-item">
+        <li class="list-group-item" id="timeUntilClosing">
             Prochaine fermeture dans @Model.NextClosing.TimeUntilClosing
         </li>
         <li class="list-group-item">
@@ -32,3 +32,28 @@
         
     </ul>
 </div>
+
+@section Scripts {
+    <script type="text/javascript">
+    setInterval(() => {
+        var closeDate = new Date("@Model.NextClosing.FormattedClosingDate")
+        var now = Date.now()
+        var delta = Math.abs(closeDate - now) / 1000;
+        var days = Math.floor(delta / 864000);
+        delta -= days * 86400;
+        var hours = Math.floor(delta / 3600) % 24;
+        delta -= hours * 3600;
+        var minutes = Math.floor(delta / 60) % 60;
+        delta -= minutes * 60;
+        var seconds = Math.floor(delta % 60);
+
+        var daysStr = days < 1 ? "" : days + " jours, "
+        var hoursStr = hours < 1 ? "" : hours + " heures, "
+        var minutesStr = minutes < 1 ? "" : minutes + " minutes, "
+        var secondsStr = seconds < 1 ? "" : seconds + " secondes"
+
+        document.getElementById("timeUntilClosing").innerText = "Prochaine fermeture dans " + daysStr + hoursStr + minutesStr + secondsStr
+    }, 1000)
+        
+    </script>
+}
