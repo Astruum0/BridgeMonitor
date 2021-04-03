@@ -22,13 +22,15 @@
         <li class="list-group-item" id="timeUntilClosing">
             Prochaine fermeture dans
         </li>
-        <li class="list-group-item">
-            @if(Model.NextClosing.TrafficRisk) {
-                <text>Risque élevé de bouchons !</text>
-            } else {
-                <text>Risque faible de bouchons</text>
-            }
-        </li>
+        @if(Model.NextClosing.TrafficRisk) {
+            <li class="list-group-item list-group-item-danger">
+                Risque élevé de bouchons !
+            </li>   
+        } else {
+            <li class="list-group-item list-group-item-success">
+                Risque faible de bouchons
+            </li>   
+        }
         
     </ul>
 </div>

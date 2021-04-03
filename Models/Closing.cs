@@ -45,7 +45,7 @@ namespace BridgeMonitor.Models
                 var closing = Convert.ToDateTime(ClosingDate);
                 var reopening = Convert.ToDateTime(ReopeningDate);
 
-                return ((closing.Hour <= 7 && 7 <= reopening.Hour) || (closing.Hour <= 9 && 9 <= reopening.Hour)) || ((closing.Hour <= 17 && 17 <= reopening.Hour) || (closing.Hour <= 19 && 19 <= reopening.Hour));
+                return ((closing.Hour <= 7 && 7 <= reopening.Hour) || (closing.Hour <= 9 && 7 <= reopening.Hour)) || ((closing.Hour <= 17 && 17 <= reopening.Hour) || (closing.Hour <= 19 && 19 <= reopening.Hour));
             }
         }
 
