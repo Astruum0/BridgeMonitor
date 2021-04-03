@@ -4,13 +4,13 @@
 @model BridgeMonitor.Models.ClosingList;
 
 <div class="text-left">
-    <h1 class="display-4">Détails de la fermeture du @Model.DetailedClosing.FormattedCLosingDateOnly</h1>
+    <h1 class="display-4">Détails de la fermeture du @Model.DetailedClosing.FormattedClosingDateOnlyDays</h1>
     <ul class="list-group">
         <li class="list-group-item">
-            Date de fermeture : @Model.DetailedClosing.FormattedClosingDate
+            Date de fermeture : @Model.DetailedClosing.FormattedClosingDateFR
         </li>
         <li class="list-group-item">
-            Date de réouverture : @Model.DetailedClosing.FormattedReopeningDate
+            Date de réouverture : @Model.DetailedClosing.FormattedReopeningDateFR
         </li>
         <li class="list-group-item">
             Bateau : @Model.DetailedClosing.BoatName
@@ -44,7 +44,7 @@
         var closeDate = new Date("@Model.DetailedClosing.FormattedClosingDate")
         var now = Date.now()
         var delta = Math.abs(closeDate - now) / 1000;
-        var days = Math.floor(delta / 864000);
+        var days = Math.floor(delta / 86400);
         delta -= days * 86400;
         var hours = Math.floor(delta / 3600) % 24;
         delta -= hours * 3600;

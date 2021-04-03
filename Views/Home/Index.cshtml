@@ -7,10 +7,10 @@
     <h1 class="display-4">Prochaine fermeture</h1>
     <ul class="list-group">
         <li class="list-group-item">
-            Date de fermeture : @Model.NextClosing.FormattedClosingDate
+            Date de fermeture : @Model.NextClosing.FormattedClosingDateFR
         </li>
         <li class="list-group-item">
-            Date de réouverture : @Model.NextClosing.FormattedReopeningDate
+            Date de réouverture : @Model.NextClosing.FormattedReopeningDateFR
         </li>
         <li class="list-group-item">
             Bateau : @Model.NextClosing.BoatName
@@ -42,7 +42,7 @@
         var closeDate = new Date("@Model.NextClosing.FormattedClosingDate")
         var now = Date.now()
         var delta = Math.abs(closeDate - now) / 1000;
-        var days = Math.floor(delta / 864000);
+        var days = Math.floor(delta / 86400);
         delta -= days * 86400;
         var hours = Math.floor(delta / 3600) % 24;
         delta -= hours * 3600;

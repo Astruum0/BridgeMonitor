@@ -18,6 +18,12 @@ namespace BridgeMonitor.Models
         [JsonPropertyName("reopening_date")]
         public string ReopeningDate { get; set; }
 
+        public string FormattedClosingDateFR { 
+            get { return Convert.ToDateTime(ClosingDate).ToString("F", CultureInfo.CreateSpecificCulture("fr-FR")); }}
+        
+        public string FormattedReopeningDateFR {
+            get { return Convert.ToDateTime(ReopeningDate).ToString("F", CultureInfo.CreateSpecificCulture("fr-FR")); }}
+
         public string FormattedClosingDate { 
             get { return Convert.ToDateTime(ClosingDate).ToString(); }}
         
@@ -35,7 +41,7 @@ namespace BridgeMonitor.Models
             }
         }
 
-        public string FormattedCLosingDateOnly {
+        public string FormattedClosingDateOnlyDays {
             get {
                 return Convert.ToDateTime(ClosingDate).ToString("D", CultureInfo.CreateSpecificCulture("fr-FR"));
             }

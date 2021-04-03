@@ -12,7 +12,7 @@
         @foreach (var closing in Model.ListOfFutureClosing)
         {
             <a asp-area="" asp-controller="Home" asp-action="Details" asp-route-id="@closing.id" class="list-group-item list-group-item-action">
-                Bateau @closing.BoatName, du @closing.FormattedClosingDate au @closing.FormattedReopeningDate (@closing.ClosingDuration)
+                Bateau @closing.BoatName, du @closing.FormattedClosingDateFR au @closing.FormattedReopeningDateFR (@closing.ClosingDuration)
             </a>
         }
     </div>
@@ -24,7 +24,7 @@
         @foreach (var closing in Model.ListOfDoneClosing)
         {
             <a asp-area="" asp-controller="Home" asp-action="Details" asp-route-id="@closing.id" class="list-group-item list-group-item-action">
-                Bateau @closing.BoatName, du @closing.FormattedClosingDate au @closing.FormattedReopeningDate (@closing.ClosingDuration)
+                Bateau @closing.BoatName, du @closing.FormattedClosingDateFR au @closing.FormattedReopeningDateFR (@closing.ClosingDuration)
             </a>
         }
     </div>
