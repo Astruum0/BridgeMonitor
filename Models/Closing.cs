@@ -40,20 +40,12 @@ namespace BridgeMonitor.Models
                 return Convert.ToDateTime(ClosingDate).ToString("D", CultureInfo.CreateSpecificCulture("fr-FR"));
             }
         }
-
-        public string TimeUntilClosing {
-            get {
-                var diff = Convert.ToDateTime(ClosingDate) - DateTime.Now;
-                return $"{Math.Floor(diff.TotalDays).ToString()} jours, {Math.Floor(diff.TotalHours%24).ToString()} heures, {Math.Floor(diff.TotalMinutes%60).ToString()} minutes et {Math.Floor(diff.TotalSeconds%60).ToString()} secondes";
-            }
-        }
-
         public bool TrafficRisk {
             get {
                 var closing = Convert.ToDateTime(ClosingDate);
                 var reopening = Convert.ToDateTime(ReopeningDate);
 
-                return (closing.Hour <= 9 && 7 >= reopening.Hour) || (closing.Hour <= 19 && 17 >= reopening.Hour);
+                return ((closing.Hour <= 7 && 7 <= reopening.Hour) || (closing.Hour <= 9 && 9 <= reopening.Hour)) || ((closing.Hour <= 17 && 17 <= reopening.Hour) || (closing.Hour <= 19 && 19 <= reopening.Hour));
             }
         }
 

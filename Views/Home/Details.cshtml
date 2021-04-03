@@ -20,22 +20,27 @@
             Durée de la fermeture : @Model.DetailedClosing.ClosingDuration
         </li>
         <li class="list-group-item" id="timeUntilClosing">
-            Prochaine fermeture dans @Model.DetailedClosing.TimeUntilClosing
+            Prochaine fermeture dans
         </li>
-        <li class="list-group-item">
-            @if(Model.DetailedClosing.TrafficRisk) {
-                <text>Risque élevé de bouchons !</text>
-            } else {
-                <text>Risque faible de bouchons</text>
-            }
-        </li>
+        @if(Model.DetailedClosing.TrafficRisk) {
+            <li class="list-group-item list-group-item-danger">
+                Risque élevé de bouchons !
+            </li>   
+        } else {
+            <li class="list-group-item list-group-item-success">
+                Risque faible de bouchons
+            </li>   
+        }
+
+        
         
     </ul>
 </div>
 
 @section Scripts {
     <script type="text/javascript">
-    setInterval(() => {
+
+    const refreshTimer = () => {
         var closeDate = new Date("@Model.DetailedClosing.FormattedClosingDate")
         var now = Date.now()
         var delta = Math.abs(closeDate - now) / 1000;
@@ -48,11 +53,16 @@
         var seconds = Math.floor(delta % 60);
 
         var daysStr = days < 1 ? "" : days + " jours, "
-        var hoursStr = hours < 1 ? "" : hours + " heures, "
-        var minutesStr = minutes < 1 ? "" : minutes + " minutes, "
-        var secondsStr = seconds < 1 ? "" : seconds + " secondes"
+        var hoursStr = hours < 1 ? "" : hours + " heures"
+        var minutesStr = minutes < 1 ? "" : ", " + minutes + " minutes"
+        var secondsStr = seconds < 1 ? "" : ", " + seconds + " secondes"
 
         document.getElementById("timeUntilClosing").innerText = "Prochaine fermeture dans " + daysStr + hoursStr + minutesStr + secondsStr
+    }
+
+    refreshTimer()
+    setInterval(() => {
+        refreshTimer()
     }, 1000)
         
     </script>

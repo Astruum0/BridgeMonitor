@@ -20,7 +20,7 @@
             Durée de la fermeture : @Model.NextClosing.ClosingDuration
         </li>
         <li class="list-group-item" id="timeUntilClosing">
-            Prochaine fermeture dans @Model.NextClosing.TimeUntilClosing
+            Prochaine fermeture dans
         </li>
         <li class="list-group-item">
             @if(Model.NextClosing.TrafficRisk) {
@@ -35,7 +35,8 @@
 
 @section Scripts {
     <script type="text/javascript">
-    setInterval(() => {
+
+    const refreshTimer = () => {
         var closeDate = new Date("@Model.NextClosing.FormattedClosingDate")
         var now = Date.now()
         var delta = Math.abs(closeDate - now) / 1000;
@@ -48,11 +49,16 @@
         var seconds = Math.floor(delta % 60);
 
         var daysStr = days < 1 ? "" : days + " jours, "
-        var hoursStr = hours < 1 ? "" : hours + " heures, "
-        var minutesStr = minutes < 1 ? "" : minutes + " minutes, "
-        var secondsStr = seconds < 1 ? "" : seconds + " secondes"
+        var hoursStr = hours < 1 ? "" : hours + " heures"
+        var minutesStr = minutes < 1 ? "" : ", " + minutes + " minutes"
+        var secondsStr = seconds < 1 ? "" : ", " + seconds + " secondes"
 
         document.getElementById("timeUntilClosing").innerText = "Prochaine fermeture dans " + daysStr + hoursStr + minutesStr + secondsStr
+    }
+
+    refreshTimer()
+    setInterval(() => {
+        refreshTimer()
     }, 1000)
         
     </script>
